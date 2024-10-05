@@ -3,9 +3,12 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@*": ["src/*"]
+      "@mocks/*": ["mocks/*"],
+      "@components/*": ["components/*"],
+      "@assets/*": ["assets/*"],
+      "@layouts/*": ["layouts/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro"],

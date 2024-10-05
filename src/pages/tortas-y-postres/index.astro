@@ -1,0 +1,22 @@
+---
+import RecipeCard from "@components/RecipeCard.astro";
+import Layout from "@layouts/Layout.astro";
+import { recipeMock } from "@mocks/recipesMock";
+---
+
+<Layout title="Uchi | Tortas y Postres">
+	<main class="m-4 relative h-screen">
+		<div class="h-[10%] flex items-center">
+			<a
+				href="/"
+				class="px-5 py-2 ml-5 bg-secondary text-4xl text-primary text-center rounded shadow-3xl hover:bg-[#B3B770]"
+				title="Volver">Volver</a
+			>
+		</div>
+
+		<section class="flex flex-col w-[80%] m-auto">
+			<h1 class="m-auto text-5xl mt-2 mb-10 text-accent" >Tortas y Postres</h1>
+			{recipeMock.map((recipe, i) => <RecipeCard text={recipe.text} />)}
+		</section>
+	</main>
+</Layout>

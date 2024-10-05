@@ -1,7 +1,7 @@
 ---
-import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import LinkButton from "@components/LinkButton.astro";
+import Whatsapp from "@components/Whatsapp.astro";
 ---
 
 <Layout title="Uchi | Home">
@@ -13,42 +13,12 @@ import LinkButton from "@components/LinkButton.astro";
 		<section class="col-span-2 flex flex-col items-end pr-14">
 			<div class="flex flex-col justify-between h-3/6">
 				<LinkButton title="HACE TU PEDIDO" href="/" />
-				<LinkButton title="TORTAS Y POSTRES" href="/" />
+				<LinkButton title="TORTAS Y POSTRES" href="/tortas-y-postres" />
 			</div>
 		</section>
 
-		<div class="relative h-full">
-			<div class="h-1/2 relative">
-				<div
-					class="bg-white w-1/2 h-fit absolute bottom-3 right-[15%] rounded-md p-2 shadow-md"
-				>
-					<span class="text-lg"
-						>Realiza consultas o pedidos personalizados!</span
-					>
-				</div>
-				<div
-					class="bg-white h-6 w-6 rotate-45 absolute bottom-0 right-[30%] shadow-md"
-				>
-				</div>
-			</div>
-			<div class="bg-red-50">
-				<button
-					data-whatsapp
-					class="absolute bottom-1/4 right-1/4"
-					title="Consultas o pedidos personalizados."
-				>
-					<Icon name="whatsapp" size={75} />
-				</button>
-			</div>
-		</div>
+		<Whatsapp />
 	</main>
 </Layout>
 
-<script>
-	const whatsappButton = document.querySelector("[data-whatsapp]");
-
-	whatsappButton!.addEventListener("click", () => {
-		window.open("https://wa.me/+59898822947/?text=Hola", "_blank");
-	});
-</script>
 <style></style>
