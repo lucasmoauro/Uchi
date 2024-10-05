@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+	text: string;
+	img?: string;
+}
+
+const { img, text } = Astro.props;
+
+import placeholder from "../assets/images/placeholder.jpeg";
+---
+
+<div class="flex odd:justify-end even:justify-start">
+	<div class="bg-white w-[45%] h-44 rounded shadow-md flex">
+		<div class="w-1/4 h-full even:hidden" ,>
+			<Image
+				src={placeholder}
+				alt="Tortas"
+				class="object-cover h-full w-full rounded-r"
+			/>
+		</div>
+		<div class="flex-1 p-2">
+			<span class="text-xl">
+				{text}
+			</span>
+		</div>
+		<div class="w-1/4 h-full odd:hidden">
+			<Image
+				src={placeholder}
+				alt="Tortas"
+				class="object-cover h-full w-full rounded-r"
+			/>
+		</div>
+	</div>
+</div>
