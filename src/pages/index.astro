@@ -17,14 +17,29 @@ import LinkButton from "@components/LinkButton.astro";
 			</div>
 		</section>
 
-		<div class="relative">
-			<button
-				data-whatsapp
-				class="absolute bottom-1/4 right-1/4"
-				title="Consultas o pedidos personalizados."
-			>
-				<Icon name="whatsapp" size={75} />
-			</button>
+		<div class="relative h-full">
+			<div class="h-1/2 relative">
+				<div
+					class="bg-white w-1/2 h-fit absolute bottom-3 right-[15%] rounded-md p-2 shadow-md"
+				>
+					<span class="text-lg"
+						>Realiza consultas o pedidos personalizados!</span
+					>
+				</div>
+				<div
+					class="bg-white h-6 w-6 rotate-45 absolute bottom-0 right-[30%] shadow-md"
+				>
+				</div>
+			</div>
+			<div class="bg-red-50">
+				<button
+					data-whatsapp
+					class="absolute bottom-1/4 right-1/4"
+					title="Consultas o pedidos personalizados."
+				>
+					<Icon name="whatsapp" size={75} />
+				</button>
+			</div>
 		</div>
 	</main>
 </Layout>

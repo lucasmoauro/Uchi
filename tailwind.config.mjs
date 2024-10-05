@@ -9,6 +9,9 @@ export default {
         accent: "#C58C6D",
         "secondary-accent": "#725C3A",
       },
+      boxShadow: {
+        "3xl": "0 4px 5px 0 #00000050",
+      },
     },
   },
   plugins: [],
