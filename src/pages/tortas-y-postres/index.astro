@@ -2,21 +2,63 @@
 import RecipeCard from "@components/RecipeCard.astro";
 import Layout from "@layouts/Layout.astro";
 import { recipeMock } from "@mocks/recipesMock";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Uchi | Tortas y Postres">
-	<main class="m-4 relative h-screen">
+	<main class="m-4 pb-10 relative">
 		<div class="h-[10%] flex items-center">
 			<a
 				href="/"
+				id="btn-back"
 				class="px-5 py-2 ml-5 bg-secondary text-4xl text-primary text-center rounded shadow-3xl hover:bg-[#B3B770]"
 				title="Volver">Volver</a
 			>
 		</div>
 
-		<section class="flex flex-col w-[80%] m-auto">
-			<h1 class="m-auto text-5xl mt-2 mb-10 text-accent" >Tortas y Postres</h1>
-			{recipeMock.map((recipe, i) => <RecipeCard text={recipe.text} />)}
+		<section class="flex flex-col w-[90%] m-auto">
+			<h1 class="m-auto text-5xl mt-2 mb-10 text-accent">Tortas y Postres</h1>
+			<div class="flex flex-wrap justify-between">
+				{
+					recipeMock.map((recipe, i) => (
+						<RecipeCard text={recipe.text} index={i} />
+					))
+				}
+			</div>
 		</section>
+		<a
+			href="#btn-back"
+			title="Volver al comienzo"
+			class="bg-secondary h-16 w-16 fixed right-5 bottom-10 rounded-full shadow-3xl flex justify-center items-center transition ease-in-out duration-500 opacity-0 pointer-events-none"
+			id="btn-to-top"
+		>
+			<Icon name="arrowUp" size={40} />
+		</a>
 	</main>
 </Layout>
+
+<script>
+	const btnToTop = document.querySelector("#btn-to-top");
+
+	const hasScrolledFromTop = () => {
+		return window.scrollY > 200;
+	};
+
+	btnToTop?.classList.add("opacity-0");
+
+	window.addEventListener("scroll", () => {
+		if (hasScrolledFromTop()) {
+			btnToTop?.classList.remove("opacity-0", "pointer-events-none");
+			btnToTop?.classList.add("opacity-100");
+		} else {
+			btnToTop?.classList.remove("opacity-100");
+			btnToTop?.classList.add("opacity-0", "pointer-events-none");
+		}
+	});
+</script>
+
+<style>
+	html {
+		scroll-behavior: smooth;
+	}
+</style>
