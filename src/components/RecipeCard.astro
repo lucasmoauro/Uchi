@@ -4,27 +4,28 @@ import { Image } from "astro:assets";
 interface Props {
 	text: string;
 	img?: string;
-	index: number;
 }
 
-const { img, text, index } = Astro.props;
+const { img, text } = Astro.props;
 
 import placeholder from "../assets/images/placeholder.jpeg";
 ---
 
 <div
-	class="bg-white w-[49%] h-44 rounded shadow-md flex my-5 cursor-pointer hover:shadow-3xl hover:-translate-y-1 hover:scale-105 transition ease-in-out delay-75 duration-300"
+	class="bg-primary w-[49%] h-44 rounded shadow-3xl my-5 cursor-pointer hover:shadow-3xl hover:-translate-y-1 hover:scale-105 transition ease-in-out delay-75 duration-300"
 >
-	<div class="w-1/4 h-full">
-		<Image
-			src={placeholder}
-			alt="Tortas"
-			class="object-cover h-full w-full even:rounded-r odd:rounded-l"
-		/>
-	</div>
-	<div class="flex-1 p-2">
-		<span class="text-xl">
-			{text}
-		</span>
-	</div>
+	<a class="flex h-full w-full" href="/tortas-y-postres/torta">
+		<div class="w-1/4 h-full">
+			<Image
+				src={placeholder}
+				alt="Tortas"
+				class="object-cover h-full w-full even:rounded-r odd:rounded-l"
+			/>
+		</div>
+		<div class="flex-1 p-2">
+			<span class="text-xl text-secondary-accent">
+				{text}
+			</span>
+		</div>
+	</a>
 </div>

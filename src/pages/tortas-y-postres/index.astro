@@ -19,11 +19,7 @@ import { Icon } from "astro-icon/components";
 		<section class="flex flex-col w-[90%] m-auto">
 			<h1 class="m-auto text-5xl mt-2 mb-10 text-accent">Tortas y Postres</h1>
 			<div class="flex flex-wrap justify-between">
-				{
-					recipeMock.map((recipe, i) => (
-						<RecipeCard text={recipe.text} index={i} />
-					))
-				}
+				{recipeMock.map((recipe) => <RecipeCard text={recipe.text} />)}
 			</div>
 		</section>
 		<a
