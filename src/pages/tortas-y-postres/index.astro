@@ -1,5 +1,5 @@
 ---
-import RecipeCard from "@components/RecipeCard.astro";
+import CakeCard from "@components/CakeCard.astro";
 import Layout from "@layouts/Layout.astro";
 import { recipeMock } from "@mocks/recipesMock";
 import { Icon } from "astro-icon/components";
@@ -19,7 +19,7 @@ import { Icon } from "astro-icon/components";
 		<section class="flex flex-col w-[90%] m-auto">
 			<h1 class="m-auto text-5xl mt-2 mb-10 text-accent">Tortas y Postres</h1>
 			<div class="flex flex-wrap justify-between">
-				{recipeMock.map((recipe) => <RecipeCard text={recipe.text} />)}
+				{recipeMock.map((recipe) => <CakeCard text={recipe.text} />)}
 			</div>
 		</section>
 		<a
