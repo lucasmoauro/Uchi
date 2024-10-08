@@ -1,0 +1,21 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<li class="my-1">
+	<input
+		type="checkbox"
+		alt={title}
+		aria-label={title}
+		id={title.toLowerCase()}
+		class="cursor-pointer mr-1"
+	/>
+	<label
+		for={title.toLowerCase()}
+		class="cursor-pointer text-xl font-medium text-accent">{title}</label
+	>
+</li>
