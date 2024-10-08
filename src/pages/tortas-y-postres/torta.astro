@@ -3,17 +3,13 @@ import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
 
 import placeholder from "../../assets/images/placeholder.jpeg";
+import BackButton from "@components/BackButton.astro";
 ---
 
 <Layout title="Uchi | torta">
 	<main class="m-4 min-h-screen mb-10">
 		<div class="h-[10%] flex items-center mb-5">
-			<a
-				id="btn-back"
-				href="/tortas-y-postres"
-				class="px-5 py-2 ml-5 bg-secondary text-4xl text-primary text-center rounded shadow-3xl hover:bg-[#B3B770]"
-				title="Volver">Volver</a
-			>
+			<BackButton href="/tortas-y-postres" />
 		</div>
 
 		<section class="w-6/12 m-auto bg-primary shadow-3xl rounded">

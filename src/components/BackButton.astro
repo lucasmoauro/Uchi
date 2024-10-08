@@ -1,0 +1,14 @@
+---
+interface Props {
+	href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a
+	id="btn-back"
+	href={href}
+	class="px-5 py-2 ml-5 bg-secondary text-4xl text-primary text-center rounded shadow-3xl hover:bg-[#B3B770]"
+	title="Volver">Volver</a
+>
