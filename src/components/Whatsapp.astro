@@ -26,9 +26,11 @@ import { Icon } from "astro-icon/components";
 </div>
 
 <script>
-	const whatsappButton = document.querySelector("[data-whatsapp]");
+	document.addEventListener("astro:page-load", () => {
+		const whatsappButton = document.querySelector("[data-whatsapp]");
 
-	whatsappButton!.addEventListener("click", () => {
-		window.open("https://wa.me/+59898822947/?text=Hola", "_blank");
+		whatsappButton!.addEventListener("click", () => {
+			window.open("https://wa.me/+59898822947/?text=Hola", "_blank");
+		});
 	});
 </script>

@@ -28,24 +28,25 @@ import { Icon } from "astro-icon/components";
 		</a>
 	</main>
 </Layout>
-
 <script>
-	const btnToTop = document.querySelector("#btn-to-top");
+	document.addEventListener("astro:page-load", () => {
+		const btnToTop = document.querySelector("#btn-to-top");
 
-	const hasScrolledFromTop = () => {
-		return window.scrollY > 200;
-	};
+		const hasScrolledFromTop = () => {
+			return window.scrollY > 200;
+		};
 
-	btnToTop?.classList.add("opacity-0");
+		btnToTop?.classList.add("opacity-0");
 
-	window.addEventListener("scroll", () => {
-		if (hasScrolledFromTop()) {
-			btnToTop?.classList.remove("opacity-0", "pointer-events-none");
-			btnToTop?.classList.add("opacity-100");
-		} else {
-			btnToTop?.classList.remove("opacity-100");
-			btnToTop?.classList.add("opacity-0", "pointer-events-none");
-		}
+		window.addEventListener("scroll", () => {
+			if (hasScrolledFromTop()) {
+				btnToTop?.classList.remove("opacity-0", "pointer-events-none");
+				btnToTop?.classList.add("opacity-100");
+			} else {
+				btnToTop?.classList.remove("opacity-100");
+				btnToTop?.classList.add("opacity-0", "pointer-events-none");
+			}
+		});
 	});
 </script>
 
