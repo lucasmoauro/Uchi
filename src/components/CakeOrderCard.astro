@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+
+import placeholder from "../assets/images/placeholder.jpeg";
+---
+
+<div class="bg-primary w-9/12 min-h-96 max-h-[30rem] rounded shadow-3xl pb-3">
+	<div class="h-48 rounded-t">
+		<Image
+			src={placeholder}
+			alt="placeholder"
+			class="h-full w-full object-cover rounded-t"
+			quality="low"
+		/>
+	</div>
+	<div class="text-accent flex flex-col justify-center items-center px-4">
+		<h2 class="text-2xl text-center font-semibold my-2">
+			Gateau Orange Earl Grey
+		</h2>
+
+		<span class="font-medium text-pretty">
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum vero qui
+			aliquid harum, inventore asperiores minima sint impedit beatae corporis
+			nihil explicabo illum praesentium sed quas a, ratione atque et.
+		</span>
+	</div>
+</div>
