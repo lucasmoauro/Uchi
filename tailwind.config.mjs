@@ -11,6 +11,7 @@ export default {
       },
       boxShadow: {
         "3xl": "0 4px 5px 0 #00000050",
+        "3xl-inner": "2px 0 5px 0 #00000050",
       },
     },
   },

@@ -2,16 +2,18 @@
 import { Image } from "astro:assets";
 
 import placeholder from "../assets/images/placeholder.jpeg";
+import { OrderCounter } from "./react/OrderCounter";
 ---
 
 <div class="bg-primary w-9/12 min-h-96 max-h-[30rem] rounded shadow-3xl pb-3">
-	<div class="h-48 rounded-t">
+	<div class="h-48 rounded-t relative">
 		<Image
 			src={placeholder}
 			alt="placeholder"
 			class="h-full w-full object-cover rounded-t"
 			quality="low"
 		/>
+		<OrderCounter client:load id="lala" />
 	</div>
 	<div class="text-accent flex flex-col justify-center items-center px-4">
 		<h2 class="text-2xl text-center font-semibold my-2">
