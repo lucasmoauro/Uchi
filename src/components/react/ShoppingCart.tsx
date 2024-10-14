@@ -53,11 +53,12 @@ export const ShoppingCart = () => {
             </div>
           </div>
           <div className="flex items-center justify-around flex-1">
-            <button
+            <a
+              href="/pedido/checkout"
               className={`px-5 py-2 bg-secondary text-3xl text-primary rounded shadow-3xl hover:bg-[#B3B770] ${isCartOpen ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"} transform delay-75 duration-500 ease-in-out`}
             >
               Pagar
-            </button>
+            </a>
 
             {isCartOpen ? (
               <img
@@ -80,11 +81,12 @@ export const ShoppingCart = () => {
         {orderMock.length && <ShoppingCartTable orderMock={orderMock} />}
 
         <div className="w-full col-span-2 py-4 flex justify-end mt-1">
-          <button
+          <a
+            href="/pedido/checkout"
             className={`px-5 py-2 mr-3 bg-secondary text-3xl text-primary rounded shadow-3xl hover:bg-[#B3B770] ${!isCartOpen ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"}`}
           >
             Pagar
-          </button>
+          </a>
         </div>
       </div>
     </section>

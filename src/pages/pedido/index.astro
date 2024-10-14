@@ -5,7 +5,6 @@ import CakeOrderCard from "@components/CakeOrderCard.astro";
 import { ShoppingCart } from "@components/react/ShoppingCart";
 import { StepperOrder } from "@components/react/StepperOrder";
 import Layout from "@layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
 
 const listItems = [
 	{
@@ -21,14 +20,14 @@ const listItems = [
 ---
 
 <Layout title="Uchi | Realiza tu pedido">
-	<main class="m-4 pb-10">
+	<main class="m-4 pb-20">
 		<div class="h-[10%] flex items-center">
 			<BackButton href="/" />
 		</div>
 		<section class="flex flex-col justify-center items-center w-full mt-4">
 			<section class="flex flex-grow w-6/12 mb-2">
 				<div
-					class="bg-primary w-full rounded-full shadow-3xl flex items-center justify-center"
+					class="bg-secondary-accent/5 w-full rounded-full shadow-3xl flex items-center justify-center"
 				>
 					<StepperOrder client:load />
 				</div>
@@ -41,13 +40,11 @@ const listItems = [
 				<!-- CARDS -->
 				<section class="grid grid-cols-3 place-items-center gap-10 flex-1 ml-8">
 					<!-- Card -->
-					<CakeOrderCard />
-					<CakeOrderCard />
-					<CakeOrderCard />
-					<CakeOrderCard />
-					<CakeOrderCard />
-					<CakeOrderCard />
-					<CakeOrderCard />
+					<CakeOrderCard title="Gateau Orange Earl Grey" />
+					<CakeOrderCard title="Chipa"/>
+					<CakeOrderCard title="Chocolate blanco"/>
+					<CakeOrderCard title="Chocolate"/>
+					<CakeOrderCard title="Lorem ipsum dolor"/>
 				</section>
 			</section>
 			<ShoppingCart client:load />
