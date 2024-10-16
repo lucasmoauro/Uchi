@@ -1,4 +1,4 @@
-import type { Order } from "./ShoppingCart";
+import type { Order } from "@mocks/orderMock";
 
 interface Props {
   orderMock: Order[];
@@ -25,25 +25,30 @@ export const ShoppingCartTable = ({ orderMock }: Props) => {
             </td>
           </tr>
         </thead>
+        {/* <hr className="" /> */}
         <tbody
-          className={`grid grid-cols-4 max-h-52 ${orderMock.length > 5 ? "overflow-y-scroll" : "overflow-y-visible"}`}
+          className={`border-t-2 border-t-accent  grid grid-cols-4 max-h-52 mt-2 ${orderMock.length > 5 ? "overflow-y-scroll" : "overflow-y-visible"}`}
         >
           {orderMock.map((item, i) => (
             <tr
-              className="col-span-4 py-2 flex justify-between even:bg-secondary-accent/10 even:text-secondary-accent even:hover:bg-secondary-accent/20 text-accent"
+              className="col-span-4 py-2 flex justify-between even:bg-secondary-accent/10 even:text-secondary-accent text-accent"
               key={i}
             >
               <td className="flex-1 flex justify-center font-semibold  text-lg">
                 {item.title}
               </td>
               <td className="flex-1 flex justify-center font-semibold text-lg">
+                <span></span>
                 {item.quantity}
+                <span>
+                  <img src="/plus.svg" height={30} />
+                </span>
               </td>
               <td className="flex-1 flex justify-center font-semibold text-lg">
                 ${item.price}
               </td>
               <td className="flex-1 flex justify-center">
-                <img src="src/icons/shoppingCart.svg" alt="" width={30} />
+                <img src="/trashcan.svg" alt="" width={30} />
               </td>
             </tr>
           ))}

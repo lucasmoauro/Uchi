@@ -26,7 +26,7 @@ export const OrderCounter = ({ id }: Props) => {
         className="bg-primary rounded flex items-center justify-center cursor-pointer"
         onClick={() => changeCakeNumber(1, "-")}
       >
-        <img src="src/icons/minus.svg" height={35} width={35} />
+        <img src="/minus.svg" height={35} width={35} />
       </div>
       <div className="bg-primary h-10 w-10 rounded font-medium text-2xl flex items-center justify-center">
         {cakeNumber}
@@ -35,7 +35,7 @@ export const OrderCounter = ({ id }: Props) => {
         className="bg-primary h-10 w-10 rounded flex items-center justify-center cursor-pointer"
         onClick={() => changeCakeNumber(1, "+")}
       >
-        <img src="src/icons/plus.svg" height={35} width={35} />
+        <img src="/plus.svg" height={35} width={35} />
       </div>
     </section>
   );

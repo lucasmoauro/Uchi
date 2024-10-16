@@ -1,0 +1,43 @@
+---
+import BackButton from "@components/BackButton.astro";
+import { ShoppingCartTable } from "@components/react/ShoppingCartTable";
+import { StepperOrder } from "@components/react/StepperOrder";
+import Layout from "@layouts/Layout.astro";
+
+import { orderMock } from "@mocks/orderMock";
+---
+
+<Layout title="Uchi | Checkout de tu pedido">
+	<main class="m-4 pb-20">
+		<div class="h-[10%] flex items-center">
+			<BackButton href="/pedido" />
+		</div>
+
+		<section class="flex flex-col justify-center items-center w-full mt-4">
+			<div class="w-full flex items-center justify-center px-3">
+				<section class="flex w-6/12 mb-2">
+					<div
+						class="bg-secondary-accent/5 w-full rounded-full shadow-3xl flex items-center justify-center"
+					>
+						<StepperOrder client:load />
+					</div>
+				</section>
+			</div>
+			<section
+				class="bg-primary shadow-3xl rounded w-7/12 flex flex-col items-center justify-center mt-6"
+			>
+				<div class="w-full py-3 flex">
+					<ShoppingCartTable orderMock={orderMock} client:load />
+				</div>
+				<div class="w-full col-span-2 py-4 flex justify-end mt-1">
+					<a
+						href="/pedido/checkout"
+						class={`px-5 py-2 mr-3 bg-secondary text-3xl text-primary rounded shadow-3xl hover:bg-[#B3B770]`}
+					>
+						Pagar
+					</a>
+				</div>
+			</section>
+		</section>
+	</main>
+</Layout>

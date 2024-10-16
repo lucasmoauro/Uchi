@@ -8,7 +8,8 @@
       "@mocks/*": ["mocks/*"],
       "@components/*": ["components/*"],
       "@assets/*": ["assets/*"],
-      "@layouts/*": ["layouts/*"]
+      "@layouts/*": ["layouts/*"],
+      "@store/*": ["store/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro"],
