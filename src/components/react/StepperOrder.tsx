@@ -8,7 +8,7 @@ export const StepperOrder = ({ step }: Props) => {
       <ul className="flex justify-between items-center w-[95%] py-1">
         <li
           className={`flex w-full items-center after:content-[''] 
-          after:h-1 ${step === 2 ? "after:bg-secondary" : "after:bg-secondary-accent"} after:flex-1`}
+          after:h-1 ${step >= 2 ? "after:bg-secondary" : "after:bg-secondary-accent"} after:flex-1`}
         >
           <div
             className={`${step <= 3 && "bg-secondary"}
@@ -24,11 +24,11 @@ export const StepperOrder = ({ step }: Props) => {
           </div>
         </li>
         <li
-          className="flex w-full items-center after:content-[''] 
-          after:h-1 after:bg-secondary-accent after:flex-1"
+          className={`flex w-full items-center after:content-[''] 
+          after:h-1 ${step > 2 ? "after:bg-secondary" : "after:bg-secondary-accent"} after:flex-1`}
         >
           <div
-            className={`${step === 2 ? "bg-secondary" : "bg-secondary-accent"} rounded-full h-10 w-10 flex
+            className={`${step >= 2 ? "bg-secondary" : "bg-secondary-accent"} rounded-full h-10 w-10 flex
              items-center justify-center`}
           >
             <div
@@ -44,9 +44,9 @@ export const StepperOrder = ({ step }: Props) => {
           after:h-1"
         >
           <div
-            className="bg-secondary-accent
+            className={`${step === 3 ? "bg-secondary" : "bg-secondary-accent"}
             rounded-full h-10 w-10 flex
-             items-center justify-center"
+             items-center justify-center`}
           >
             <div
               className="h-8 w-8 rounded-full flex
