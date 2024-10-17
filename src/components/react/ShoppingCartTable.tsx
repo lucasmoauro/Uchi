@@ -1,9 +1,11 @@
 import type { Order } from "@mocks/orderMock";
+import { ShoppingCartTableItemQty } from "./ShoppingCartTableItemQty";
 
 interface Props {
   orderMock: Order[];
+  path?: string;
 }
-export const ShoppingCartTable = ({ orderMock }: Props) => {
+export const ShoppingCartTable = ({ orderMock, path = "" }: Props) => {
   return (
     <section
       className={`w-full col-span-3 min-h-64 ${orderMock.length ? "opacity-100" : "opacity-0"} transition delay-75 duration-300 ease-in-out`}
@@ -37,17 +39,11 @@ export const ShoppingCartTable = ({ orderMock }: Props) => {
               <td className="flex-1 flex justify-center font-semibold  text-lg">
                 {item.title}
               </td>
-              <td className="flex-1 flex justify-center font-semibold text-lg">
-                <span></span>
-                {item.quantity}
-                <span>
-                  <img src="/plus.svg" height={30} />
-                </span>
-              </td>
+              <ShoppingCartTableItemQty quantity={item.quantity} path={path} />
               <td className="flex-1 flex justify-center font-semibold text-lg">
                 ${item.price}
               </td>
-              <td className="flex-1 flex justify-center">
+              <td className="flex-1 flex justify-center cursor-pointer">
                 <img src="/trashcan.svg" alt="" width={30} />
               </td>
             </tr>

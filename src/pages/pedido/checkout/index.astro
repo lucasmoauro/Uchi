@@ -5,6 +5,8 @@ import { StepperOrder } from "@components/react/StepperOrder";
 import Layout from "@layouts/Layout.astro";
 
 import { orderMock } from "@mocks/orderMock";
+
+const { path = "checkout", step = 2 } = Astro.params;
 ---
 
 <Layout title="Uchi | Checkout de tu pedido">
@@ -19,7 +21,7 @@ import { orderMock } from "@mocks/orderMock";
 					<div
 						class="bg-secondary-accent/5 w-full rounded-full shadow-3xl flex items-center justify-center"
 					>
-						<StepperOrder client:load />
+						<StepperOrder client:load step={+step} />
 					</div>
 				</section>
 			</div>
@@ -27,7 +29,7 @@ import { orderMock } from "@mocks/orderMock";
 				class="bg-primary shadow-3xl rounded w-7/12 flex flex-col items-center justify-center mt-6"
 			>
 				<div class="w-full py-3 flex">
-					<ShoppingCartTable orderMock={orderMock} client:load />
+					<ShoppingCartTable orderMock={orderMock} path={path} client:load />
 				</div>
 				<div class="w-full col-span-2 py-4 flex justify-end mt-1">
 					<a

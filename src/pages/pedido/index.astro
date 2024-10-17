@@ -17,6 +17,8 @@ const listItems = [
 		title: "Dulce de Leche",
 	},
 ];
+
+const { step = 1 } = Astro.params;
 ---
 
 <Layout title="Uchi | Realiza tu pedido">
@@ -30,7 +32,7 @@ const listItems = [
 					<div
 						class="bg-secondary-accent/5 w-full rounded-full shadow-3xl flex items-center justify-center"
 					>
-						<StepperOrder client:load />
+						<StepperOrder client:load step={+step} />
 					</div>
 				</section>
 			</div>

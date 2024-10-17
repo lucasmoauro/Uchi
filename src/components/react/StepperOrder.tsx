@@ -1,15 +1,19 @@
-export const StepperOrder = () => {
+interface Props {
+  step: number;
+}
+
+export const StepperOrder = ({ step }: Props) => {
   return (
     <>
       <ul className="flex justify-between items-center w-[95%] py-1">
         <li
-          className="flex w-full items-center after:content-[''] 
-          after:h-1 after:bg-secondary after:flex-1"
+          className={`flex w-full items-center after:content-[''] 
+          after:h-1 ${step === 2 ? "after:bg-secondary" : "after:bg-secondary-accent"} after:flex-1`}
         >
           <div
-            className="bg-secondary
+            className={`${step <= 3 && "bg-secondary"}
             rounded-full h-10 w-10 flex
-             items-center justify-center"
+             items-center justify-center`}
           >
             <div
               className="h-8 w-8 rounded-full flex
@@ -24,8 +28,8 @@ export const StepperOrder = () => {
           after:h-1 after:bg-secondary-accent after:flex-1"
         >
           <div
-            className="bg-secondary-accent rounded-full h-10 w-10 flex
-             items-center justify-center"
+            className={`${step === 2 ? "bg-secondary" : "bg-secondary-accent"} rounded-full h-10 w-10 flex
+             items-center justify-center`}
           >
             <div
               className="h-8 w-8 rounded-full flex
