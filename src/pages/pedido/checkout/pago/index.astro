@@ -1,6 +1,7 @@
 ---
 import BackButton from "@components/BackButton.astro";
 import { StepperOrder } from "@components/react/StepperOrder";
+import { PaymentForm } from "@components/react/payment/PaymentForm";
 import Layout from "@layouts/Layout.astro";
 
 const { step = 3 } = Astro.params;
@@ -13,13 +14,21 @@ const { step = 3 } = Astro.params;
 		</div>
 
 		<section class="flex flex-col justify-center items-center w-full mt-4">
-			<div class="w-full flex items-center justify-center px-3">
+			<div class="w-full flex items-center justify-center flex-col px-3">
 				<section class="flex w-6/12 mb-2">
 					<div
 						class="bg-secondary-accent/5 w-full rounded-full shadow-3xl flex items-center justify-center"
 					>
 						<StepperOrder client:load step={+step} />
 					</div>
+				</section>
+
+				<section class="bg-primary shadow-3xl w-6/12 mt-6 rounded text-accent">
+					<h1 class="text-3xl font-semibold text-center py-3">
+						Pedido N°54545
+					</h1>
+
+					<PaymentForm />
 				</section>
 			</div>
 		</section>
