@@ -2,8 +2,8 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="relative h-full">
-	<div class="h-1/2 relative">
+<div class="md:h-full fixed bottom-7 left-3/4 md:relative">
+	<div class="h-1/2 relative hidden sm:block">
 		<div
 			class="bg-white w-1/2 h-fit absolute bottom-3 right-[15%] rounded-md p-2 shadow-md"
 		>
@@ -14,10 +14,10 @@ import { Icon } from "astro-icon/components";
 		>
 		</div>
 	</div>
-	<div class="bg-red-50">
+	<div>
 		<button
 			data-whatsapp
-			class="absolute bottom-1/4 right-1/4"
+			class="md:absolute md:bottom-1/4 md:right-1/4"
 			title="Consultas o pedidos personalizados."
 		>
 			<Icon name="whatsapp" size={75} />
