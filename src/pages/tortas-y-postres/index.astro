@@ -7,13 +7,15 @@ import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Uchi | Tortas y Postres">
-	<main class="m-4 pb-10 relative">
+	<main class="mt-2 md:m-4 pb-10 relative">
 		<div class="h-[10%] flex items-center">
 			<BackButton href="/" />
 		</div>
 
-		<section class="flex flex-col w-[90%] m-auto">
-			<h1 class="m-auto text-5xl mt-2 mb-10 text-accent">Tortas y Postres</h1>
+		<section class="flex flex-col w-[93%] md:w-[90%] m-auto mt-6 md:mt-0">
+			<h1 class="m-auto text-5xl md:text-5xl mt-2 mb-10 text-accent">
+				Tortas y Postres
+			</h1>
 			<div class="flex flex-wrap justify-between">
 				{recipeMock.map((recipe) => <CakeCard text={recipe.text} />)}
 			</div>
@@ -21,8 +23,16 @@ import { Icon } from "astro-icon/components";
 		<a
 			href="#btn-back"
 			title="Volver al comienzo"
-			class="bg-secondary h-16 w-16 fixed right-5 bottom-10 rounded-full shadow-3xl flex justify-center items-center transition ease-in-out duration-500 opacity-0 pointer-events-none"
+			class="hidden bg-secondary h-16 w-16 fixed right-5 bottom-10 rounded-full shadow-3xl md:flex justify-center items-center transition ease-in-out duration-500 opacity-0 pointer-events-none"
 			id="btn-to-top"
+		>
+			<Icon name="arrowUp" size={40} />
+		</a>
+		<a
+			href="#btn-back-mobile"
+			title="Volver al comienzo"
+			class="md:hidden bg-secondary h-16 w-16 fixed right-5 bottom-10 rounded-full shadow-3xl flex justify-center items-center transition ease-in-out duration-500 opacity-0 pointer-events-none"
+			id="btn-to-top-mobile"
 		>
 			<Icon name="arrowUp" size={40} />
 		</a>
@@ -31,20 +41,28 @@ import { Icon } from "astro-icon/components";
 <script>
 	document.addEventListener("astro:page-load", () => {
 		const btnToTop = document.querySelector("#btn-to-top");
+		const btnToTopMobile = document.querySelector("#btn-to-top-mobile");
 
 		const hasScrolledFromTop = () => {
 			return window.scrollY > 200;
 		};
 
 		btnToTop?.classList.add("opacity-0");
+		btnToTopMobile?.classList.add("opacity-0");
 
 		window.addEventListener("scroll", () => {
 			if (hasScrolledFromTop()) {
 				btnToTop?.classList.remove("opacity-0", "pointer-events-none");
+				btnToTopMobile?.classList.remove("opacity-0", "pointer-events-none");
+
 				btnToTop?.classList.add("opacity-100");
+				btnToTopMobile?.classList.add("opacity-100");
 			} else {
 				btnToTop?.classList.remove("opacity-100");
+				btnToTopMobile?.classList.remove("opacity-100");
+
 				btnToTop?.classList.add("opacity-0", "pointer-events-none");
+				btnToTopMobile?.classList.add("opacity-0", "pointer-events-none");
 			}
 		});
 	});
@@ -52,6 +70,6 @@ import { Icon } from "astro-icon/components";
 
 <style>
 	html {
-		scroll-behavior: smooth;
+		/* scroll-behavior: smooth; */
 	}
 </style>
