@@ -6,13 +6,13 @@ interface Props {
 export const ShoppingCartTableItemQty = ({ quantity, path }: Props) => {
   if (!path?.includes("checkout")) {
     return (
-      <td className="flex-1 flex justify-center items-center font-semibold text-xl">
+      <td className="flex-1 flex justify-center items-center font-semibold text-lg md:text-xl">
         {quantity}
       </td>
     );
   } else {
     return (
-      <td className="flex-1 flex justify-center items-center font-semibold text-xl">
+      <td className="flex-1 flex justify-center items-center font-semibold text-lg md:text-xl">
         <span className="mr-1 cursor-pointer ">
           <img src="/minus.svg" width={25} />
         </span>

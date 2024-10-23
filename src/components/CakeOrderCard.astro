@@ -3,10 +3,12 @@ import { Image } from "astro:assets";
 
 import placeholder from "../assets/images/placeholder.jpeg";
 import { OrderCounter } from "./react/OrderCounter";
+
+const { title } = Astro.props;
 ---
 
 <div
-	class="bg-primary w-9/12 min-h-[30rem] max-h-[30rem] rounded shadow-3xl pb-3"
+	class="bg-primary w-11/12 md:w-9/12 min-h-[30rem] max-h-[30rem] rounded shadow-3xl pb-3 mb-6"
 >
 	<div class="h-48 rounded-t relative">
 		<Image
@@ -19,7 +21,7 @@ import { OrderCounter } from "./react/OrderCounter";
 	</div>
 	<div class="text-accent flex flex-col justify-center items-center px-4">
 		<h2 class="text-2xl text-center font-semibold my-2">
-			Gateau Orange Earl Grey
+			{title}
 		</h2>
 
 		<span class="font-medium text-pretty">
