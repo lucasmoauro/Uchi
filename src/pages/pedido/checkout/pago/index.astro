@@ -8,14 +8,14 @@ const { step = 3 } = Astro.params;
 ---
 
 <Layout title="Uchi | Realiza el pago de tu pedido">
-	<main class="m-4 pb-20">
+	<main class="mt-2 md:m-4 pb-20">
 		<div class="h-[10%] flex items-center">
 			<BackButton href="/pedido/checkout" />
 		</div>
 
 		<section class="flex flex-col justify-center items-center w-full mt-4">
-			<div class="w-full flex items-center justify-center flex-col px-3">
-				<section class="flex w-6/12 mb-2">
+			<div class="w-full flex items-center justify-center flex-col md:px-3">
+				<section class="flex w-11/12 md:w-6/12 mb-2">
 					<div
 						class="bg-secondary-accent/5 w-full rounded-full shadow-3xl flex items-center justify-center"
 					>
@@ -23,7 +23,7 @@ const { step = 3 } = Astro.params;
 					</div>
 				</section>
 
-				<section class="bg-primary shadow-3xl w-6/12 mt-6 rounded text-accent">
+				<section class="bg-primary shadow-3xl w-11/12 md:w-6/12 mt-6 rounded text-accent">
 					<h1 class="text-3xl font-semibold text-center py-3">
 						Pedido N°54545
 					</h1>

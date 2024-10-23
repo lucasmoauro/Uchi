@@ -4,7 +4,7 @@ interface Props {
 
 export const PaymentMethod = ({ label }: Props) => {
   return (
-    <div className="flex items-center gap-x-3">
+    <div className="flex items-center gap-x-1 md:gap-x-3">
       <input
         id={label}
         name="payment"
@@ -14,7 +14,7 @@ export const PaymentMethod = ({ label }: Props) => {
       />
       <label
         htmlFor={label}
-        className="text-xl font-medium text-accent capitalize cursor-pointer"
+        className="text-lg md:text-xl font-medium text-accent capitalize cursor-pointer"
       >
         {label}
       </label>
