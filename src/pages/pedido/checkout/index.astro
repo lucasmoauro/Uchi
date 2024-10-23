@@ -10,14 +10,14 @@ const { path = "checkout", step = 2 } = Astro.params;
 ---
 
 <Layout title="Uchi | Checkout de tu pedido">
-	<main class="m-4 pb-20">
+	<main class="mt-2 md:m-4 pb-20">
 		<div class="h-[10%] flex items-center">
 			<BackButton href="/pedido" />
 		</div>
 
 		<section class="flex flex-col justify-center items-center w-full mt-4">
-			<div class="w-full flex items-center justify-center px-3">
-				<section class="flex w-6/12 mb-2">
+			<div class="w-full flex items-center justify-center md:px-3">
+				<section class="flex w-11/12 md:w-6/12 mb-2">
 					<div
 						class="bg-secondary-accent/5 w-full rounded-full shadow-3xl flex items-center justify-center"
 					>
@@ -26,9 +26,9 @@ const { path = "checkout", step = 2 } = Astro.params;
 				</section>
 			</div>
 			<section
-				class="bg-primary shadow-3xl rounded w-7/12 flex flex-col items-center justify-center mt-6"
+				class="bg-primary shadow-3xl h-full rounded w-11/12 md:w-7/12 flex flex-col items-center justify-center mt-6"
 			>
-				<div class="w-full py-3 flex">
+				<div class="w-full bg-red600 py-3 flex h-[25rem]" >
 					<ShoppingCartTable orderMock={orderMock} path={path} client:load />
 				</div>
 				<div class="w-full col-span-2 py-4 flex justify-end mt-1">
