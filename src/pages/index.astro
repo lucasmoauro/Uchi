@@ -6,16 +6,20 @@ import Whatsapp from "@components/Whatsapp.astro";
 
 <Layout title="Uchi | Home">
 	<main
-		class="grid grid-cols-2 md:grid-cols-3 grid-rows-2 min-h-screen relative"
+		class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-3 grid-rows-2 min-h-screen relative"
 	>
-		<div class="flex items-center justify-center col-span-2 md:col-span-3">
+		<div
+			class="flex items-center justify-center col-span-2 md:col-span-4 lg:col-span-3"
+		>
 			<h1 class="text-9xl text-accent mt-6">UCHI</h1>
 		</div>
 
 		<section
-			class="col-span-2 flex flex-col items-center md:items-end md:pr-14"
+			class="col-span-2 md:col-span-3 lg:col-span-2 flex flex-col items-center md:items-end lg:pr-14"
 		>
-			<div class="flex flex-col justify-between h-3/6">
+			<div
+				class="flex flex-col justify-between md:justify-around lg:justify-between h-3/6 md:h-full lg:h-3/6"
+			>
 				<LinkButton title="HACE TU PEDIDO" href="/pedido" />
 				<LinkButton title="TORTAS Y POSTRES" href="/tortas-y-postres" />
 			</div>
