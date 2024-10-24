@@ -20,7 +20,7 @@ export const ShoppingCartTable = ({ orderMock, path = "" }: Props) => {
           </tr>
         </thead>
         <tbody
-          className={`border-t-2 border-t-accent  grid grid-cols-4 ${path.includes("checkout") ? "max-h-80" : "max-h-52"} md:max-h-52 mt-2 ${orderMock.length > 4 ? "overflow-y-scroll" : "overflow-y-visible"}`}
+          className={`border-t-2 border-t-accent grid grid-cols-4 ${path.includes("checkout") ? "max-h-80 md:md:min-h-80" : "max-h-52"} mt-2 ${orderMock.length > 4 && "overflow-y-auto" }`}
         >
           {orderMock.map((item, i) => (
             <tr

@@ -34,14 +34,14 @@ const ShoppingCart = () => {
 
             {isCartOpen.value ? (
               <img
-                src="src/icons/orderArrowUp.svg"
+                src="/orderArrowUp.svg"
                 className="cursor-pointer flex justify-end rotate-180"
                 width={35}
                 onClick={changeCartStatus}
               />
             ) : (
               <img
-                src="src/icons/orderArrowUp.svg"
+                src="/orderArrowUp.svg"
                 className=" cursor-pointer flex justify-end"
                 width={35}
                 onClick={changeCartStatus}

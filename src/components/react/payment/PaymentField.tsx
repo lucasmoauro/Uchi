@@ -4,7 +4,7 @@ interface Props extends inputField {}
 
 export const PaymentField = ({ name, placeholder, type }: Props) => {
   return (
-    <div className="sm:col-span-4">
+    <div className="sm:col-span-1">
       <label
         htmlFor={name}
         className="block text-2xl font-medium leading-6 text-accent capitalize"
@@ -12,7 +12,7 @@ export const PaymentField = ({ name, placeholder, type }: Props) => {
         {name}
       </label>
       <div className="mt-2">
-        <div className="flex rounded-md shadow-md ring-1 ring-inset ring-accent/45 focus-within:ring-2 focus-within:ring-inset focus-within:ring-accent  sm:max-w-md">
+        <div className="flex rounded-md shadow-md ring-1 ring-inset ring-accent/45 focus-within:ring-2 focus-within:ring-inset focus-within:ring-accent">
           <input
             type={type}
             name={name}
