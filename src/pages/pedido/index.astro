@@ -22,13 +22,13 @@ const { step = 1 } = Astro.params;
 ---
 
 <Layout title="Uchi | Realiza tu pedido">
-	<main class="mt-2 md:m-4 pb-20">
+	<main class="mt-2 lg:m-4 pb-20">
 		<div class="h-[10%] flex items-center">
 			<BackButton href="/" />
 		</div>
 		<section class="flex flex-col justify-center items-center w-full mt-4">
-			<div class="w-full flex items-center justify-center md:pl-3">
-				<section class="flex w-11/12 md:w-6/12 mb-2">
+			<div class="w-full flex items-center justify-center lg:pl-3">
+				<section class="flex w-11/12 md:w-8/12 lg:w-6/12 mb-2">
 					<div
 						class="bg-secondary-accent/5 w-full rounded-full shadow-3xl flex items-center justify-center"
 					>
@@ -38,12 +38,12 @@ const { step = 1 } = Astro.params;
 			</div>
 			<section class="flex w-full mt-4 relative">
 				<!-- FILTRO -->
-				<div class="w-2/12 ml-10 hidden md:block">
+				<div class="w-2/12 ml-10 hidden lg:block">
 					<CakeFilter listItems={listItems} />
 				</div>
 				<!-- CARDS -->
 				<section
-					class="md:grid md:grid-cols-3 place-items-center md:gap-10 flex-1 md:ml-8"
+					class="md:grid md:grid-cols-2 lg:grid-cols-3 place-items-center md:gap-10 flex-1 lg:ml-8"
 				>
 					<!-- Card -->
 					<CakeOrderCard title="Gateau Orange Earl Grey" />

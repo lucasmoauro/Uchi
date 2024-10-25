@@ -28,7 +28,7 @@ export const OrderCounter = ({ id }: Props) => {
       >
         <img src="/minus.svg" height={35} width={35} />
       </div>
-      <div className="bg-primary h-10 w-10 rounded font-medium text-2xl flex items-center justify-center">
+      <div className="bg-primary h-10 w-10 rounded font-medium text-2xl flex items-center justify-center text-accent">
         {cakeNumber}
       </div>
       <div
