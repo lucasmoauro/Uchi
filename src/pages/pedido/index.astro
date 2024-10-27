@@ -1,22 +1,10 @@
 ---
 import BackButton from "@components/BackButton.astro";
-import CakeFilter from "@components/CakeFilter.astro";
 import CakeOrderCard from "@components/CakeOrderCard.astro";
+import { Filter } from "@components/react/filter/Filter";
 import ShoppingCart from "@components/react/ShoppingCart";
 import { StepperOrder } from "@components/react/StepperOrder";
 import Layout from "@layouts/Layout.astro";
-
-const listItems = [
-	{
-		title: "Chocolate",
-	},
-	{
-		title: "Crema",
-	},
-	{
-		title: "Dulce de Leche",
-	},
-];
 
 const { step = 1 } = Astro.params;
 ---
@@ -38,9 +26,7 @@ const { step = 1 } = Astro.params;
 			</div>
 			<section class="flex w-full mt-4 relative">
 				<!-- FILTRO -->
-				<div class="w-2/12 ml-10 hidden lg:block">
-					<CakeFilter listItems={listItems} />
-				</div>
+				<Filter client:load />
 				<!-- CARDS -->
 				<section
 					class="md:grid md:grid-cols-2 lg:grid-cols-3 place-items-center md:gap-10 flex-1 lg:ml-8"
