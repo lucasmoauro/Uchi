@@ -33,7 +33,7 @@ export const CakeFilter = ({ listItems }: Props) => {
         </h3>
         <ul className="flex flex-col items-start w-11/12">
           {listItems.map((listItem) => (
-            <FilterListItem title={listItem.title} />
+            <FilterListItem title={listItem.title} key={listItem.title} />
           ))}
         </ul>
       </section>

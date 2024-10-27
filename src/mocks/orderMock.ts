@@ -1,32 +1,50 @@
-export interface Order {
+export interface Cake {
+  id: string;
   title: string;
-  quantity: number;
+  quantity?: number;
   price: number;
 }
-export const orderMock: Order[] = [
+export const orderMock: Cake[] = [
   {
-    title: "Torta de frutilla",
+    id: "torta-frutilla",
+    title: "Torta de Frutilla",
     quantity: 3,
     price: 1500,
   },
   {
-    title: "Torta de frutilla",
-    quantity: 3,
-    price: 1500,
+    id: "cheesecake-frutos-rojos",
+    title: "Cheesecake de Frutos Rojos",
+    quantity: 5,
+    price: 1800,
   },
   {
-    title: "Torta de frutilla",
-    quantity: 3,
-    price: 1500,
+    id: "brownie-nuez",
+    title: "Brownie con Nueces",
+    quantity: 2,
+    price: 1200,
   },
   {
-    title: "Torta de frutilla",
-    quantity: 3,
-    price: 1500,
+    id: "tiramisu",
+    title: "Tiramisú",
+    quantity: 4,
+    price: 2000,
   },
   {
-    title: "Torta de frutilla",
+    id: "torta-chocolate",
+    title: "Torta de Chocolate",
+    quantity: 6,
+    price: 1700,
+  },
+  {
+    id: "lemon-pie",
+    title: "Lemon Pie",
     quantity: 3,
-    price: 1500,
+    price: 1600,
+  },
+  {
+    id: "torta-oreo",
+    title: "Torta Oreo",
+    quantity: 5,
+    price: 1900,
   },
 ];

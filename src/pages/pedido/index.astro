@@ -5,6 +5,7 @@ import { Filter } from "@components/react/filter/Filter";
 import ShoppingCart from "@components/react/ShoppingCart";
 import { StepperOrder } from "@components/react/StepperOrder";
 import Layout from "@layouts/Layout.astro";
+import { orderMock } from "@mocks/orderMock";
 
 const { step = 1 } = Astro.params;
 ---
@@ -32,11 +33,11 @@ const { step = 1 } = Astro.params;
 					class="md:grid md:grid-cols-2 lg:grid-cols-3 place-items-center md:gap-10 flex-1 lg:ml-8"
 				>
 					<!-- Card -->
-					<CakeOrderCard title="Gateau Orange Earl Grey" />
-					<CakeOrderCard title="Chipa" />
-					<CakeOrderCard title="Chocolate blanco" />
-					<CakeOrderCard title="Chocolate" />
-					<CakeOrderCard title="Lorem ipsum dolor" />
+					{
+						orderMock.map(({ id, price, title }) => (
+							<CakeOrderCard title={title} id={id} price={price} key={id} />
+						))
+					}
 				</section>
 			</section>
 			<ShoppingCart client:load />
