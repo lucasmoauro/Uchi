@@ -18,7 +18,7 @@ const { title, id, price } = Astro.props as Cake;
 			class="h-full w-full object-cover rounded-t"
 			quality="low"
 		/>
-		<OrderCounter client:load id={id} price={price} title={title} />
+		<OrderCounter id={id} price={price} title={title} client:load />
 	</div>
 	<div class="flex flex-col justify-center items-center px-4">
 		<h2 class="text-2xl text-center font-semibold my-2">

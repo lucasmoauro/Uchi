@@ -1,11 +1,11 @@
-import { useState } from "react";
 import { ShoppingCartTable } from "./ShoppingCartTable";
-import { orderMock } from "@mocks/orderMock";
 import { useStore } from "@nanostores/react";
 import { isCartOpen } from "@store/isCartOpen";
+import { cartItems } from "@store/cartStore";
 
 const ShoppingCart = () => {
   const $isCartOpen = useStore(isCartOpen);
+  const $cartItems = useStore(cartItems);
 
   const changeCartStatus = () => {
     isCartOpen.set(!$isCartOpen);
@@ -50,7 +50,9 @@ const ShoppingCart = () => {
           </div>
         </section>
 
-        {orderMock.length && <ShoppingCartTable orderMock={orderMock} />}
+        {Object.keys($cartItems).length && (
+          <ShoppingCartTable cakeList={$cartItems} />
+        )}
 
         <div className="w-full col-span-2 py-1 md:hidden lg:flex md:py-4 flex justify-end mt-4 mb-2 md:mb-0 md:mt-1">
           <a

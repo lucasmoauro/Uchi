@@ -1,38 +1,46 @@
 import type { Cake } from "@mocks/orderMock";
-import { map } from "nanostores";
+import { atom } from "nanostores";
 
-export const cartItems = map<Record<string, Cake>>({});
+export const cartItems = atom<Cake[]>([]);
 
 type CakeInfo = Pick<Cake, "id" | "title" | "price">;
 
 export const addCartItem = ({ id, price, title }: CakeInfo) => {
-  const existingEntry = cartItems.get()[id];
-  if (existingEntry) {
-    cartItems.setKey(id, {
-      ...existingEntry,
-      quantity: existingEntry.quantity! + 1,
-    });
+  const currentItems = cartItems.get();
+  const itemIndex = currentItems.findIndex((item) => item.id === id);
+
+  if (itemIndex !== -1) {
+    const updatedCart = [
+      ...currentItems.slice(0, itemIndex),
+      {
+        ...currentItems[itemIndex],
+        quantity: currentItems[itemIndex].quantity! + 1,
+      },
+      ...currentItems.slice(itemIndex + 1),
+    ];
+    cartItems.set(updatedCart);
   } else {
-    cartItems.setKey(id, { id, title, price, quantity: 1 });
+    cartItems.set([...currentItems, { id, title, price, quantity: 1 }]);
   }
 };
 
-export const subtractCartItem = ({ id, price, title }: CakeInfo) => {
-  const existingEntry = cartItems.get()[id];
+export const subtractCartItem = ({ id }: CakeInfo) => {
+  const currentItems = cartItems.get();
+  const itemIndex = currentItems.findIndex((item) => item.id === id);
 
-  if (existingEntry.quantity === 1) {
-    const updatedCart = { ...cartItems.get() };
-    delete updatedCart[id];
-    cartItems.set(updatedCart);
-    return;
-  }
+  if (itemIndex !== -1) {
+    const existingEntry = currentItems[itemIndex];
 
-  if (existingEntry) {
-    cartItems.setKey(id, {
-      ...existingEntry,
-      quantity: existingEntry.quantity! - 1,
-    });
-  } else {
-    cartItems.setKey(id, { id, title, price, quantity: 1 });
+    if (existingEntry.quantity === 1) {
+      const updatedCart = currentItems.filter((item) => item.id !== id);
+      cartItems.set(updatedCart);
+    } else {
+      const updatedCart = [
+        ...currentItems.slice(0, itemIndex),
+        { ...existingEntry, quantity: existingEntry.quantity! - 1 },
+        ...currentItems.slice(itemIndex + 1),
+      ];
+      cartItems.set(updatedCart);
+    }
   }
 };
