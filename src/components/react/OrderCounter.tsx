@@ -1,7 +1,7 @@
 import type { Cake } from "@mocks/orderMock";
 import { useStore } from "@nanostores/react";
 import { addCartItem, cartItems, subtractCartItem } from "@store/cartStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const OrderCounter = ({ id, price, title }: Cake) => {
   const $cartItems = useStore(cartItems);
@@ -25,6 +25,12 @@ export const OrderCounter = ({ id, price, title }: Cake) => {
       addCartItem(cake);
     }
   };
+
+  useEffect(() => {
+    const [newCard] = $cartItems.filter((item) => item.id === id);
+
+    setCake({ ...cake, quantity: newCard?.quantity ?? 0 });
+  }, [$cartItems]);
 
   return (
     <section className="absolute w-full flex justify-between top-0 pt-0.5 px-0.5">

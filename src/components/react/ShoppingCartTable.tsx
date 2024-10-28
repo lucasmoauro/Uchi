@@ -1,5 +1,6 @@
 import type { Cake } from "@mocks/orderMock";
 import { ShoppingCartTableItemQty } from "./ShoppingCartTableItemQty";
+import { removeItemFromCart } from "@store/cartStore";
 
 interface Props {
   cakeList: Cake[];
@@ -30,11 +31,14 @@ export const ShoppingCartTable = ({ cakeList, path = "" }: Props) => {
               <td className="flex-1 flex justify-center font-semibold  text-base md:text-lg">
                 {cake.title}
               </td>
-              <ShoppingCartTableItemQty quantity={cake.quantity} path={path} />
+              <ShoppingCartTableItemQty quantity={cake.quantity!} path={path} />
               <td className="flex-1 flex justify-center items-center font-semibold text-base md:text-lg">
                 ${cake.price}
               </td>
-              <td className="flex-1 flex justify-center cursor-pointer">
+              <td
+                className="flex-1 flex justify-center cursor-pointer"
+                onClick={() => removeItemFromCart(cake)}
+              >
                 <img src="/trashcan.svg" alt="" width={30} />
               </td>
             </tr>

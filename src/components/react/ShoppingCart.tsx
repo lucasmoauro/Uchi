@@ -2,14 +2,25 @@ import { ShoppingCartTable } from "./ShoppingCartTable";
 import { useStore } from "@nanostores/react";
 import { isCartOpen } from "@store/isCartOpen";
 import { cartItems } from "@store/cartStore";
+import { useEffect, useState } from "react";
 
 const ShoppingCart = () => {
   const $isCartOpen = useStore(isCartOpen);
   const $cartItems = useStore(cartItems);
 
+  const [numberOfItems, setNumberOfItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
   const changeCartStatus = () => {
     isCartOpen.set(!$isCartOpen);
   };
+
+  useEffect(() => {
+    setNumberOfItems(
+      cartItems.get().reduce((acc, el) => acc + el.quantity!, 0),
+    );
+    setTotalPrice(cartItems.get().reduce((acc, el) => acc + el.price, 0));
+  }, [$cartItems]);
 
   return (
     <section className="fixed bottom-0 w-full flex flex-col items-center justify-center h-10">
@@ -20,8 +31,8 @@ const ShoppingCart = () => {
           <div className="col-span-1 flex justify-around items-center flex-1">
             <img src="/shoppingCart.svg" width={50} />
             <div className="flex flex-col text-lg md:text-2xl justify-center items-center text-accent font-semibold ">
-              <span>3 Tortas</span>
-              <span>$ 5000</span>
+              <span>{numberOfItems} Tortas</span>
+              <span>$ {totalPrice}</span>
             </div>
           </div>
           <div className="flex items-center justify-around flex-1">
@@ -50,9 +61,7 @@ const ShoppingCart = () => {
           </div>
         </section>
 
-        {Object.keys($cartItems).length && (
-          <ShoppingCartTable cakeList={$cartItems} />
-        )}
+        <ShoppingCartTable cakeList={$cartItems} />
 
         <div className="w-full col-span-2 py-1 md:hidden lg:flex md:py-4 flex justify-end mt-4 mb-2 md:mb-0 md:mt-1">
           <a

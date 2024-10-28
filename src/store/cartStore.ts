@@ -1,5 +1,6 @@
 import type { Cake } from "@mocks/orderMock";
 import { atom } from "nanostores";
+import { isCartOpen } from "./isCartOpen";
 
 export const cartItems = atom<Cake[]>([]);
 
@@ -15,6 +16,7 @@ export const addCartItem = ({ id, price, title }: CakeInfo) => {
       {
         ...currentItems[itemIndex],
         quantity: currentItems[itemIndex].quantity! + 1,
+        price: currentItems[itemIndex].price + price,
       },
       ...currentItems.slice(itemIndex + 1),
     ];
@@ -24,7 +26,7 @@ export const addCartItem = ({ id, price, title }: CakeInfo) => {
   }
 };
 
-export const subtractCartItem = ({ id }: CakeInfo) => {
+export const subtractCartItem = ({ id, price }: CakeInfo) => {
   const currentItems = cartItems.get();
   const itemIndex = currentItems.findIndex((item) => item.id === id);
 
@@ -37,10 +39,26 @@ export const subtractCartItem = ({ id }: CakeInfo) => {
     } else {
       const updatedCart = [
         ...currentItems.slice(0, itemIndex),
-        { ...existingEntry, quantity: existingEntry.quantity! - 1 },
+        {
+          ...existingEntry,
+          quantity: existingEntry.quantity! - 1,
+          price: currentItems[itemIndex].price - price,
+        },
+
         ...currentItems.slice(itemIndex + 1),
       ];
       cartItems.set(updatedCart);
     }
   }
+};
+
+export const removeItemFromCart = ({ id }: CakeInfo) => {
+  const currentItems = cartItems.get();
+
+  const updatedCart = currentItems.filter((item) => item.id !== id);
+
+  if (!updatedCart.length) {
+    isCartOpen.set(false);
+  }
+  cartItems.set(updatedCart);
 };
