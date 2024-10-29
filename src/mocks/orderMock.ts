@@ -2,6 +2,7 @@ export interface Cake {
   id: string;
   title: string;
   quantity?: number;
+  currentPrice?: number;
   price: number;
 }
 export const orderMock: Cake[] = [

@@ -19,7 +19,9 @@ const ShoppingCart = () => {
     setNumberOfItems(
       cartItems.get().reduce((acc, el) => acc + el.quantity!, 0),
     );
-    setTotalPrice(cartItems.get().reduce((acc, el) => acc + el.price, 0));
+    setTotalPrice(
+      cartItems.get().reduce((acc, el) => acc + el.currentPrice!, 0),
+    );
   }, [$cartItems]);
 
   return (
@@ -61,12 +63,13 @@ const ShoppingCart = () => {
           </div>
         </section>
 
-        <ShoppingCartTable cakeList={$cartItems} />
+        <ShoppingCartTable />
 
         <div className="w-full col-span-2 py-1 md:hidden lg:flex md:py-4 flex justify-end mt-4 mb-2 md:mb-0 md:mt-1">
           <a
             href="/pedido/checkout"
             className={`px-5 py-2 mr-3 bg-secondary text-2xl md:text-3xl text-primary rounded shadow-3xl hover:bg-[#B3B770] ${!isCartOpen.value ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"}`}
+            onClick={changeCartStatus}
           >
             Pagar
           </a>

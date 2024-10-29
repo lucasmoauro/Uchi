@@ -1,10 +1,9 @@
 import type { Cake } from "@mocks/orderMock";
 import { atom } from "nanostores";
 import { isCartOpen } from "./isCartOpen";
-
 export const cartItems = atom<Cake[]>([]);
 
-type CakeInfo = Pick<Cake, "id" | "title" | "price">;
+type CakeInfo = Pick<Cake, "id" | "title" | "price" | "currentPrice">;
 
 export const addCartItem = ({ id, price, title }: CakeInfo) => {
   const currentItems = cartItems.get();
@@ -16,13 +15,16 @@ export const addCartItem = ({ id, price, title }: CakeInfo) => {
       {
         ...currentItems[itemIndex],
         quantity: currentItems[itemIndex].quantity! + 1,
-        price: currentItems[itemIndex].price + price,
+        currentPrice: currentItems[itemIndex].currentPrice! + price,
       },
       ...currentItems.slice(itemIndex + 1),
     ];
     cartItems.set(updatedCart);
   } else {
-    cartItems.set([...currentItems, { id, title, price, quantity: 1 }]);
+    cartItems.set([
+      ...currentItems,
+      { id, title, currentPrice: price, price, quantity: 1 },
+    ]);
   }
 };
 
@@ -42,7 +44,7 @@ export const subtractCartItem = ({ id, price }: CakeInfo) => {
         {
           ...existingEntry,
           quantity: existingEntry.quantity! - 1,
-          price: currentItems[itemIndex].price - price,
+          currentPrice: currentItems[itemIndex].currentPrice! - price,
         },
 
         ...currentItems.slice(itemIndex + 1),

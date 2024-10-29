@@ -12,7 +12,8 @@ import { Icon } from "astro-icon/components";
 			<span class="text-lg md:hidden lg:block"
 				>Realiza consultas o pedidos personalizados!</span
 			>
-			<span class="text-base hidden md:block lg:hidden z-10">Realiza consultas!</span
+			<span class="text-base hidden md:block lg:hidden z-10"
+				>Realiza consultas!</span
 			>
 		</div>
 		<div
@@ -38,7 +39,7 @@ import { Icon } from "astro-icon/components";
 	document.addEventListener("astro:page-load", () => {
 		const whatsappButton = document.querySelector("[data-whatsapp]");
 
-		whatsappButton!.addEventListener("click", () => {
+		whatsappButton?.addEventListener("click", () => {
 			window.open("https://wa.me/+59898822947/?text=Hola", "_blank");
 		});
 	});
