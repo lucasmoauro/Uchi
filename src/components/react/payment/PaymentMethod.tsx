@@ -1,8 +1,11 @@
+import type { PaymentInfo } from "@store/paymentStore";
+
 interface Props {
   label: string;
+  updatePaymentData: (field: keyof PaymentInfo, value: any) => void;
 }
 
-export const PaymentMethod = ({ label }: Props) => {
+export const PaymentMethod = ({ label, updatePaymentData }: Props) => {
   return (
     <div className="flex items-center gap-x-1 md:gap-x-3">
       <input
@@ -11,6 +14,7 @@ export const PaymentMethod = ({ label }: Props) => {
         type="radio"
         value={label}
         className="h-4 w-4 text-accent focus:ring-accent"
+        onChange={(e) => updatePaymentData("paymentType", e.target.value)}
       />
       <label
         htmlFor={label}

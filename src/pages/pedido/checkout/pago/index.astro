@@ -1,7 +1,7 @@
 ---
 import BackButton from "@components/BackButton.astro";
 import { StepperOrder } from "@components/react/StepperOrder";
-import { PaymentForm } from "@components/react/payment/PaymentForm";
+import { PaymentSection } from "@components/react/payment/PaymentSection";
 import Layout from "@layouts/Layout.astro";
 
 const { step = 3 } = Astro.params;
@@ -23,13 +23,7 @@ const { step = 3 } = Astro.params;
 					</div>
 				</section>
 
-				<section class="bg-primary shadow-3xl w-11/12 md:w-8/12 lg:w-5/12 mt-6 rounded text-accent">
-					<h1 class="text-3xl font-semibold text-center py-3">
-						Pedido N°54545
-					</h1>
-
-					<PaymentForm />
-				</section>
+				<PaymentSection client:load />
 			</div>
 		</section>
 	</main>

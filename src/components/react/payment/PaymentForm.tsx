@@ -1,5 +1,8 @@
+import { paymentData, type PaymentInfo } from "@store/paymentStore";
 import { PaymentField } from "./PaymentField";
 import { PaymentMethod } from "./PaymentMethod";
+import { useStore } from "@nanostores/react";
+import { useEffect } from "react";
 
 type paymentOptions = {
   label: string;
@@ -9,6 +12,7 @@ export type inputField = {
   name: string;
   placeholder: string;
   type: string;
+  paymentData: string;
 };
 
 const inputFieldType: inputField[] = [
@@ -16,11 +20,13 @@ const inputFieldType: inputField[] = [
     name: "Nombre",
     placeholder: "Pedro Gimenez",
     type: "text",
+    paymentData: "name",
   },
   {
     name: "telefono",
     placeholder: "099 999 999",
     type: "tel",
+    paymentData: "cel",
   },
 ];
 
@@ -37,6 +43,19 @@ const paymentOptions: paymentOptions[] = [
 ];
 
 export const PaymentForm = () => {
+  const $paymentData = useStore(paymentData);
+
+  const updatePaymentData = (field: keyof PaymentInfo, value: any) => {
+    paymentData.set({
+      ...$paymentData,
+      [field]: value,
+    });
+  };
+
+  useEffect(() => {
+    console.log($paymentData);
+  }, [$paymentData]);
+
   return (
     <form className="px-4 md:px-6">
       <div>
@@ -44,8 +63,10 @@ export const PaymentForm = () => {
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 ">
             {inputFieldType.map((input) => (
               <PaymentField
+                updatePaymentData={updatePaymentData}
                 name={input.name}
                 placeholder={input.placeholder}
+                paymentData={input.paymentData}
                 type={input.type}
                 key={input.name}
               />
@@ -65,6 +86,7 @@ export const PaymentForm = () => {
                 name="about"
                 rows={3}
                 placeholder="Dejame algunos comentarios o indicaciones sobre tu pedido."
+                onChange={(e) => updatePaymentData("comments", e.target.value)}
                 className="block w-full resize-none rounded-md overflow-y-auto border-0 py-1.5 pl-3 bg-primary font-medium text-accent shadow-md ring-1 ring-inset ring-accent/45 placeholder:text-accent focus:ring-2 focus:ring-inset focus:ring-accent focus:outline-none sm:text-sm sm:leading-6"
               ></textarea>
             </div>
@@ -81,7 +103,11 @@ export const PaymentForm = () => {
             <div className="mt-6">
               <div className="w-full flex items-center justify-between md:justify-around">
                 {paymentOptions.map((option) => (
-                  <PaymentMethod label={option.label} key={option.label} />
+                  <PaymentMethod
+                    label={option.label}
+                    key={option.label}
+                    updatePaymentData={updatePaymentData}
+                  />
                 ))}
               </div>
             </div>
