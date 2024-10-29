@@ -28,7 +28,7 @@ const { path = "checkout", step = 2 } = Astro.params;
 				class="bg-primary shadow-3xl h-full rounded w-11/12 md:w-8/12 lg:w-7/12 flex flex-col items-center justify-center mt-6"
 			>
 				<div class="w-full py-3 md:py-0 md:pt-3 lg:pt-0 flex h-[25rem]">
-					<ShoppingCartTable path={path} client:load transition:persist />
+					<ShoppingCartTable path={path} client:only="react" />
 				</div>
 				<div class="w-full col-span-2 py-4 flex justify-end mt-1">
 					<ButtonCartCTA client:load />

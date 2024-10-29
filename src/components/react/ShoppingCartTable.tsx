@@ -24,9 +24,17 @@ export const ShoppingCartTable = ({ path = "" }: Props) => {
         <tbody
           className={`border-t-2 border-t-accent grid grid-cols-4 ${path.includes("checkout") ? "max-h-80 " : "max-h-52 md:max-h-44 lg:max-h-52"} mt-2 ${$cartItems.length > 4 && "overflow-y-auto"}`}
         >
-          {$cartItems.map((cake) => (
-            <ShoppingCartTableRow cake={cake} path={path} key={cake.id} />
-          ))}
+          {!$cartItems.length ? (
+            <tr className="col-span-4 text-accent text-xl lg:text-3xl font-bold min-h-52 flex items-center justify-center">
+              <td>
+                <span>No hay productos en su carrito</span>
+              </td>
+            </tr>
+          ) : (
+            $cartItems.map((cake) => (
+              <ShoppingCartTableRow cake={cake} path={path} key={cake.id} />
+            ))
+          )}
         </tbody>
       </table>
     </section>

@@ -40,7 +40,7 @@ const { step = 1 } = Astro.params;
 					}
 				</section>
 			</section>
-			<ShoppingCart client:load />
+			<ShoppingCart client:only="react" />
 		</section>
 	</main>
 </Layout>

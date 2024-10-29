@@ -52,10 +52,6 @@ export const PaymentForm = () => {
     });
   };
 
-  useEffect(() => {
-    console.log($paymentData);
-  }, [$paymentData]);
-
   return (
     <form className="px-4 md:px-6">
       <div>
