@@ -4,6 +4,9 @@ import CakeCard from "@components/CakeCard.astro";
 import Layout from "@layouts/Layout.astro";
 import { recipeMock } from "@mocks/recipesMock";
 import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const tortas = await getCollection("tortas");
 ---
 
 <Layout title="Uchi | Tortas y Postres">
@@ -17,7 +20,17 @@ import { Icon } from "astro-icon/components";
 				Tortas y Postres
 			</h1>
 			<div class="flex flex-wrap justify-between">
-				{recipeMock.map((recipe) => <CakeCard text={recipe.text} />)}
+				<!-- {recipeMock.map((recipe) => <CakeCard text={recipe.text} />)} -->
+				{
+					tortas.map((recipe) => (
+						<CakeCard
+							slug={recipe.slug}
+							description={recipe.data.description}
+							image={recipe.data.image}
+							title={recipe.data.title}
+						/>
+					))
+				}
 			</div>
 		</section>
 		<a

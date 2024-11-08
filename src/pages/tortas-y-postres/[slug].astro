@@ -1,18 +1,38 @@
 ---
+import type { GetStaticPaths } from "astro";
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
 
 import placeholder from "../../assets/images/placeholder.jpeg";
 import BackButton from "@components/BackButton.astro";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = (async () => {
+	const tortas = await getCollection("tortas");
+	return tortas.map((recipe) => ({
+		params: {
+			slug: recipe.slug,
+		},
+		props: {
+			recipe,
+		},
+	}));
+}) satisfies GetStaticPaths;
+
+const { recipe } = Astro.props;
+
+const { title, extendedDescription, tags, image } = recipe.data;
 ---
 
-<Layout title="Uchi | torta">
+<Layout title=`Uchi | ${title}`>
 	<main class="mt-2 lg:m-4 min-h-screen mb-10">
 		<div class="h-[10%] flex items-center mb-5">
 			<BackButton href="/tortas-y-postres" />
 		</div>
 
-		<section class="w-11/12 md:w-8/12 lg:w-6/12 m-auto bg-primary shadow-3xl rounded">
+		<section
+			class="w-11/12 md:w-8/12 lg:w-6/12 m-auto bg-primary shadow-3xl rounded"
+		>
 			<div class="h-96 rounded-t">
 				<div class="h-full w-full rounded-t">
 					<Image
@@ -26,15 +46,12 @@ import BackButton from "@components/BackButton.astro";
 
 			<section class="flex flex-col items-center text-accent">
 				<div class="my-6">
-					<h1 class="text-3xl">TITULO DE TORTA</h1>
+					<h1 class="text-3xl">{title}</h1>
 				</div>
 
 				<div class="w-10/12 pb-10">
 					<p class="text-xl text-pretty">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-						quibusdam ab rem debitis blanditiis quod quis exercitationem at, id
-						repudiandae aperiam quia animi doloremque quidem necessitatibus,
-						numquam sed corrupti? Iste?
+						{extendedDescription}
 					</p>
 				</div>
 			</section>
