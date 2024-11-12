@@ -5,9 +5,11 @@ import { Filter } from "@components/react/filter/Filter";
 import ShoppingCart from "@components/react/ShoppingCart";
 import { StepperOrder } from "@components/react/StepperOrder";
 import Layout from "@layouts/Layout.astro";
-import { orderMock } from "@mocks/orderMock";
+import { getCollection } from "astro:content";
 
 const { step = 1 } = Astro.params;
+
+const tortas = await getCollection("tortas");
 ---
 
 <Layout title="Uchi | Realiza tu pedido">
@@ -34,8 +36,8 @@ const { step = 1 } = Astro.params;
 				>
 					<!-- Card -->
 					{
-						orderMock.map(({ id, price, title }) => (
-							<CakeOrderCard title={title} id={id} price={price} key={id} />
+						tortas.map((torta) => (
+							<CakeOrderCard key={torta.id} torta={torta.data} />
 						))
 					}
 				</section>

@@ -9,19 +9,19 @@ import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async () => {
 	const tortas = await getCollection("tortas");
-	return tortas.map((recipe) => ({
+	return tortas.map((torta) => ({
 		params: {
-			slug: recipe.slug,
+			slug: torta.slug,
 		},
 		props: {
-			recipe,
+			torta,
 		},
 	}));
 }) satisfies GetStaticPaths;
 
-const { recipe } = Astro.props;
+const { torta } = Astro.props;
 
-const { title, extendedDescription, tags, image } = recipe.data;
+const { title, extendedDescription, tags, image } = torta.data;
 ---
 
 <Layout title=`Uchi | ${title}`>

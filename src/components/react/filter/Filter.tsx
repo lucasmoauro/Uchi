@@ -1,7 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { CakeFilter } from "./CakeFilter";
 import { isFilterOpen } from "@store/isFilterOpen";
-import { useEffect } from "react";
 
 const listItems = [
   {

@@ -1,8 +1,9 @@
 interface Props {
   title: string;
+  changeTagsQuery: (tag: string) => void;
 }
 
-export const FilterListItem = ({ title }: Props) => {
+export const FilterListItem = ({ title, changeTagsQuery }: Props) => {
   return (
     <li className="my-1">
       <input
@@ -11,6 +12,7 @@ export const FilterListItem = ({ title }: Props) => {
         aria-label={title}
         id={title.toLowerCase()}
         className="cursor-pointer mr-1"
+        onChange={() => changeTagsQuery(title.toLowerCase().trim())}
       />
       <label
         htmlFor={title.toLowerCase()}

@@ -2,7 +2,6 @@
 import BackButton from "@components/BackButton.astro";
 import CakeCard from "@components/CakeCard.astro";
 import Layout from "@layouts/Layout.astro";
-import { recipeMock } from "@mocks/recipesMock";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
@@ -20,7 +19,6 @@ const tortas = await getCollection("tortas");
 				Tortas y Postres
 			</h1>
 			<div class="flex flex-wrap justify-between">
-				<!-- {recipeMock.map((recipe) => <CakeCard text={recipe.text} />)} -->
 				{
 					tortas.map((recipe) => (
 						<CakeCard
