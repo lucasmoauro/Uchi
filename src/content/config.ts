@@ -1,5 +1,13 @@
 import { defineCollection, z } from "astro:content";
 
+export interface CakeInfo {
+  title: string;
+  description: string;
+  extendedDescription: string;
+  image: string;
+  tags: string[];
+}
+
 const tortas = defineCollection({
   type: "content",
   schema: z.object({
