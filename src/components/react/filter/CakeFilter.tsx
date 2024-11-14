@@ -2,7 +2,6 @@ import { useStore } from "@nanostores/react";
 import { FilterListItem } from "./FilterListItem";
 
 import { filterStore } from "@store/filterStore";
-import { useEffect } from "react";
 
 interface Props {
   listItems: ListItem[];
@@ -32,10 +31,6 @@ export const CakeFilter = ({ listItems }: Props) => {
       });
     }
   };
-
-  useEffect(() => {
-    console.log(filter);
-  }, [filter]);
 
   return (
     <div className="bg-primary w-full p-3 text-center shadow-3xl sticky top-28 z-50">
