@@ -1,9 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
 import Layout from "@layouts/Layout.astro";
-import { Image } from "astro:assets";
 
-import placeholder from "../../assets/images/placeholder.jpeg";
 import BackButton from "@components/BackButton.astro";
 import { getCollection } from "astro:content";
 
@@ -35,11 +33,10 @@ const { title, extendedDescription, tags, image } = torta.data;
 		>
 			<div class="h-96 rounded-t">
 				<div class="h-full w-full rounded-t">
-					<Image
-						src={placeholder}
+					<img
+						src="/placeholder.jpeg"
 						alt="placeholder"
-						class="max-h-full max-w-full rounded-t"
-						quality="low"
+						class="max-h-full max-w-full w-full rounded-t"
 					/>
 				</div>
 			</div>

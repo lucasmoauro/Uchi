@@ -2,8 +2,6 @@
 import { Image } from "astro:assets";
 
 const { slug, description, image, title } = Astro.props;
-
-import placeholder from "../assets/images/placeholder.jpeg";
 ---
 
 <div
@@ -15,19 +13,19 @@ import placeholder from "../assets/images/placeholder.jpeg";
 	>
 		<div class="w-full md:w-1/4 h-full">
 			<Image
-				src={image || placeholder}
+				src={image || "/placeholder.jpeg"}
+				height={50}
+				width={50}
 				alt="Tortas"
 				class="object-cover h-full w-full even:rounded-r odd:rounded-l"
 				quality="low"
 			/>
 		</div>
 		<div class="flex-1 p-3 md:p-2">
-			<span
-				class="block text-center lg:text-2xl text-accent font-semibold py-2"
-			>
+			<span class="block text-center text-2xl text-accent font-semibold py-2">
 				{title}
 			</span>
-			<span class="text-xl text-secondary-accent">
+			<span class="text-xl text-accent">
 				{description}
 			</span>
 		</div>
