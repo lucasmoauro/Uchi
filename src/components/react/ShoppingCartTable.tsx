@@ -1,6 +1,7 @@
 import { cartItems } from "@store/cartStore";
 import { useStore } from "@nanostores/react";
 import { ShoppingCartTableRow } from "./ShoppingCartTableRow";
+import { useEffect, useState } from "react";
 
 interface Props {
   path?: string;
@@ -8,9 +9,19 @@ interface Props {
 export const ShoppingCartTable = ({ path = "" }: Props) => {
   const $cartItems = useStore(cartItems);
 
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    const total = $cartItems.reduce(
+      (acc, cartItem) => acc + cartItem.currentPrice!,
+      0,
+    );
+    setTotalPrice(total);
+  }, [$cartItems]);
+
   return (
     <section
-      className={`w-full col-span-3 md:mb-6 lg:mb-0 min-h-64 md:min-h-80 lg:min-h-64`}
+      className={`w-full col-span-3 md:mb-6 lg:mb-0 min-h-64 md:min-h-80 lg:min-h-64 relative`}
     >
       <table className="w-full col-span-3 flex-1 flex flex-col">
         <thead>
@@ -37,6 +48,11 @@ export const ShoppingCartTable = ({ path = "" }: Props) => {
           )}
         </tbody>
       </table>
+      {path.includes("checkout") && (
+        <span className="text-2xl lg:text-3xl text-accent font-semibold flex justify-end px-6 absolute bottom-0 right-0">
+          Total: ${totalPrice}
+        </span>
+      )}
     </section>
   );
 };
