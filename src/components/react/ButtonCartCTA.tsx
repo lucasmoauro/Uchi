@@ -1,8 +1,4 @@
-import { useStore } from "@nanostores/react";
-import { cartItems } from "@store/cartStore";
-
 export const ButtonCartCTA = () => {
-  const $cartItems = useStore(cartItems);
   return (
     <a
       href="/pedido/checkout/pago"

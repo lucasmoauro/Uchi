@@ -12,7 +12,7 @@ export type inputField = {
   name: string;
   placeholder: string;
   type: string;
-  paymentData: string;
+  paymentDataInput: string;
 };
 
 const inputFieldType: inputField[] = [
@@ -20,13 +20,13 @@ const inputFieldType: inputField[] = [
     name: "Nombre",
     placeholder: "Pedro Gimenez",
     type: "text",
-    paymentData: "name",
+    paymentDataInput: "name",
   },
   {
     name: "telefono",
     placeholder: "099 999 999",
     type: "tel",
-    paymentData: "cel",
+    paymentDataInput: "cel",
   },
 ];
 
@@ -62,9 +62,11 @@ export const PaymentForm = () => {
                 updatePaymentData={updatePaymentData}
                 name={input.name}
                 placeholder={input.placeholder}
-                paymentData={input.paymentData}
+                paymentDataInput={input.paymentDataInput}
                 type={input.type}
                 key={input.name}
+                formName={$paymentData.name}
+                formCel={$paymentData.cel}
               />
             ))}
           </div>
@@ -80,6 +82,7 @@ export const PaymentForm = () => {
               <textarea
                 id="about"
                 name="about"
+                value={$paymentData.comments}
                 rows={3}
                 placeholder="Dejame algunos comentarios o indicaciones sobre tu pedido."
                 onChange={(e) => updatePaymentData("comments", e.target.value)}
@@ -90,7 +93,7 @@ export const PaymentForm = () => {
         </div>
       </div>
 
-      <div className="pb-12">
+      <div className="pb-8">
         <div className="mt-10">
           <fieldset>
             <legend className="text-2xl font-medium leading-6 text-accent">
@@ -103,6 +106,7 @@ export const PaymentForm = () => {
                     label={option.label}
                     key={option.label}
                     updatePaymentData={updatePaymentData}
+                    formPayment={$paymentData.paymentType}
                   />
                 ))}
               </div>

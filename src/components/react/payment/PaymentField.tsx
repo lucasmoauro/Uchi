@@ -3,14 +3,18 @@ import { type PaymentInfo } from "@store/paymentStore";
 
 interface Props extends inputField {
   updatePaymentData: (field: keyof PaymentInfo, value: any) => void;
+  formName: string;
+  formCel: string;
 }
 
 export const PaymentField = ({
   name,
   placeholder,
   type,
-  paymentData,
+  paymentDataInput,
   updatePaymentData,
+  formCel,
+  formName,
 }: Props) => {
   return (
     <div className="sm:col-span-1">
@@ -29,9 +33,10 @@ export const PaymentField = ({
             autoComplete="off"
             className="block flex-1 border-0 bg-transparent py-1.5 text-accent text-xl capitalize placeholder:text-accent focus:ring-0 sm:text-sm sm:leading-6 font-semibold focus:outline-none pl-3"
             placeholder={placeholder}
+            value={paymentDataInput.includes("name") ? formName : formCel}
             onChange={(e) =>
               updatePaymentData(
-                paymentData as keyof PaymentInfo,
+                paymentDataInput as keyof PaymentInfo,
                 e.target.value,
               )
             }
