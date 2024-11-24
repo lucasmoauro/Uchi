@@ -2,7 +2,6 @@ import { paymentData, type PaymentInfo } from "@store/paymentStore";
 import { PaymentField } from "./PaymentField";
 import { PaymentMethod } from "./PaymentMethod";
 import { useStore } from "@nanostores/react";
-import { useEffect } from "react";
 
 type paymentOptions = {
   label: string;

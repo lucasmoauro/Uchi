@@ -1,4 +1,3 @@
-import type { Cake } from "@mocks/orderMock";
 import { atom } from "nanostores";
 
 export interface PaymentInfo {
@@ -6,8 +5,6 @@ export interface PaymentInfo {
   cel: string;
   comments: string;
   paymentType: "cel" | "name" | "comments" | "paymentType";
-  orderNumber: number;
-  order: Cake[];
 }
 
 const paymentDataInitialState = {
@@ -15,8 +12,6 @@ const paymentDataInitialState = {
   cel: "",
   comments: "",
   paymentType: "",
-  orderNumber: 0,
-  order: [],
 };
 export const paymentData = atom(paymentDataInitialState);
 
