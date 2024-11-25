@@ -3,20 +3,36 @@ import { PaymentForm } from "./PaymentForm";
 import { useEffect } from "react";
 import { clearPaymentData, paymentData } from "@store/paymentStore";
 import { newOrder } from "helpers/newOrder";
-import { cartItems } from "@store/cartStore";
+import { cartItems, clearCartData } from "@store/cartStore";
+import { popUp } from "helpers/alerts/popUp";
 
 export const PaymentSection = () => {
   const $paymentData = useStore(paymentData);
   const $cartItems = useStore(cartItems);
 
-  const addNewOrder = () => {
+  const addNewOrder = async () => {
     const totalPrice = cartItems
       .get()
       .reduce((acc, el) => acc + el.currentPrice!, 0)
       .toString();
 
     const order = $cartItems;
-    newOrder($paymentData, order, totalPrice);
+
+    try {
+      // await newOrder($paymentData, order, totalPrice);
+    } catch (error) {
+    } finally {
+      popUp({
+        title: "Pedido realizado!",
+        icon: "success",
+        text: `Precio del pedido: $${totalPrice}`,
+        confirmButtonText: "Ir a whatsapp",
+        cancelButtonText: "Ver instrucciones",
+        name: $paymentData.name,
+      });
+      clearPaymentData();
+      clearCartData();
+    }
   };
 
   useEffect(() => {

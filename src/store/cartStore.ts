@@ -1,7 +1,10 @@
 import type { Cake } from "@mocks/orderMock";
 import { atom } from "nanostores";
 import { isCartOpen } from "./isCartOpen";
-export const cartItems = atom<Cake[]>([]);
+
+const cartInitialState: Cake[] = [];
+
+export const cartItems = atom<Cake[]>(cartInitialState);
 
 type CakeInfo = Pick<Cake, "id" | "title" | "price" | "currentPrice">;
 
@@ -63,4 +66,8 @@ export const removeItemFromCart = ({ id }: CakeInfo) => {
     isCartOpen.set(false);
   }
   cartItems.set(updatedCart);
+};
+
+export const clearCartData = () => {
+  return cartItems.set(cartInitialState);
 };
