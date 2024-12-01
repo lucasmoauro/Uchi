@@ -1,0 +1,53 @@
+---
+import { OvenHours } from "@components/react/oven/OvenHours";
+import { OvenMinutes } from "@components/react/oven/OvenMinutes";
+---
+
+<div
+	class="w-full h-1/6 flex items-end justify-center bg-accent rounded-t-full"
+>
+	<div
+		class="bg-primary/50 w-10/12 h-3/4 flex justify-evenly items-center rounded-3xl shadow-3xl"
+	>
+		<div
+			class="before:content-[''] w-6 h-6 lg:w-8 lg:h-8 bg-accent rounded-full shadow-3xl flex justify-end items-center"
+		>
+			<div class="bg-accent h-1 w-3 rounded-full"></div>
+		</div>
+
+		<div
+			class="bg-accent w-16 h-6 lg:w-20 lg:h-8 flex items-center justify-center rounded-md"
+		>
+			<span class="font-semibold text-primary/60 text-lg lg:text-xl">
+				<OvenHours client:visible />
+				<span class="fade"> : </span>
+
+				<OvenMinutes client:visible />
+			</span>
+		</div>
+		<div
+			class="before:content-[''] w-6 h-6 lg:w-8 lg:h-8 bg-accent rounded-full shadow-3xl"
+		>
+		</div>
+	</div>
+</div>
+
+<style>
+	.fade {
+		animation: fadeIn 2s 75ms infinite ease-in-out;
+	}
+
+	@keyframes fadeIn {
+		0% {
+			opacity: 100%;
+		}
+
+		50% {
+			opacity: 0%;
+		}
+
+		100% {
+			opacity: 100%;
+		}
+	}
+</style>

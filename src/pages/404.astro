@@ -1,0 +1,33 @@
+---
+import OvenContainer from "@components/astro/oven/OvenContainer.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Uchi | Realiza tu pedido">
+	<main class="mt-2 lg:m-4">
+		<section class="flex items-center justify-center w-full">
+			<div
+				class="w-11/12 lg:w-auto flex flex-col justify-center items-center h-screen"
+			>
+				<div>
+					<h1 class="text-8xl lg:text-9xl text-accent font-semibold">404</h1>
+				</div>
+
+				<div class="md:mb-3 lg:mb-0">
+					<span class="text-lg lg:text-2xl text-accent font-semibold"
+						>¡Parece que esta página aún no está lista!</span
+					>
+				</div>
+				<OvenContainer />
+
+				<section class="lg:mb-6">
+					<a
+						href="/"
+						class="bg-secondary text-primary font-semibold text-3xl rounded-md py-3 px-3 shadow-3xl"
+						>Volver al inicio</a
+					>
+				</section>
+			</div>
+		</section>
+	</main>
+</Layout>
