@@ -20,13 +20,14 @@ export const PaymentField = ({
     <div className="sm:col-span-1">
       <label
         htmlFor={name}
-        className="block text-2xl font-medium leading-6 text-accent capitalize"
+        className="block text-2xl font-medium leading-6 text-accent capitalize after:content-['*']"
       >
         {name}
       </label>
       <div className="mt-2">
         <div className="flex rounded-md shadow-md ring-1 ring-inset ring-accent/45 focus-within:ring-2 focus-within:ring-inset focus-within:ring-accent">
           <input
+            required
             type={type}
             name={name}
             id={name}
@@ -37,7 +38,7 @@ export const PaymentField = ({
             onChange={(e) =>
               updatePaymentData(
                 paymentDataInput as keyof PaymentInfo,
-                e.target.value,
+                e.target.value.trim(),
               )
             }
           />

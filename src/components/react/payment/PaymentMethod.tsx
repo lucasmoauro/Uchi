@@ -14,6 +14,7 @@ export const PaymentMethod = ({
   return (
     <div className="flex items-center gap-x-1 md:gap-x-3">
       <input
+        required
         id={label}
         name="payment"
         type="radio"
