@@ -38,7 +38,7 @@ export const PaymentField = ({
             onChange={(e) =>
               updatePaymentData(
                 paymentDataInput as keyof PaymentInfo,
-                e.target.value.trim(),
+                e.target.value,
               )
             }
           />

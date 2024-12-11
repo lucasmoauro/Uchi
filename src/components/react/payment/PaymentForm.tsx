@@ -66,13 +66,32 @@ export const PaymentForm = () => {
 
     if (!$cartItems.length) {
       popUpAlert({
-        title: "Pedido realizado!",
+        title: "¡El carrito no puede estar vacio!",
         icon: "error",
         text: `¡Ups! Necesitas agregar tortas o postres al carrito para continuar.`,
         confirmButtonText: "Descubre nuestras tortas",
+        showCancelButton: false,
+        showConfirmButton: true,
       });
       return;
     }
+
+    if (
+      !$paymentData.cel.length ||
+      !$paymentData.name.length ||
+      !$paymentData.paymentType.length
+    ) {
+      popUpAlert({
+        title: "¡El formulario no puede estar vacio!",
+        icon: "error",
+        text: `¡Ups! Necesitas completar el formulario para continuar.`,
+        showCancelButton: true,
+        showConfirmButton: false,
+        cancelButtonText: "Completa el formulario",
+      });
+      return;
+    }
+
     const totalPrice = cartItems
       .get()
       .reduce((acc, el) => acc + el.currentPrice!, 0)
@@ -126,9 +145,7 @@ export const PaymentForm = () => {
                 value={$paymentData.comments}
                 rows={3}
                 placeholder="Dejame algunos comentarios o indicaciones sobre tu pedido."
-                onChange={(e) =>
-                  updatePaymentData("comments", e.target.value.trim())
-                }
+                onChange={(e) => updatePaymentData("comments", e.target.value)}
                 className="block w-full resize-none rounded-md overflow-y-auto border-0 py-1.5 pl-3 bg-primary font-medium text-accent shadow-md ring-1 ring-inset ring-accent/45 placeholder:text-accent focus:ring-2 focus:ring-inset focus:ring-accent focus:outline-none sm:text-sm sm:leading-6"
               ></textarea>
             </div>

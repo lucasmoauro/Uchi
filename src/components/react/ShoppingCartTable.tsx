@@ -49,7 +49,9 @@ export const ShoppingCartTable = ({ path = "" }: Props) => {
         </tbody>
       </table>
       {path.includes("checkout") && (
-        <span className="text-2xl lg:text-3xl text-accent font-semibold flex justify-end px-6 absolute bottom-0 right-0">
+        <span
+          className={`text-2xl lg:text-3xl text-accent font-semibold flex justify-end px-6 absolute bottom-0 right-0 ${!$cartItems.length && "hidden"}`}
+        >
           Total: ${totalPrice}
         </span>
       )}

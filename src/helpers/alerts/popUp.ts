@@ -1,8 +1,10 @@
 import Swal, { type SweetAlertOptions } from "sweetalert2";
 
 interface Props extends Pick<SweetAlertOptions, "title" | "text" | "icon"> {
-  confirmButtonText: string;
+  confirmButtonText?: string;
   cancelButtonText?: string;
+  showConfirmButton?: boolean;
+  showCancelButton?: boolean;
   name?: string;
 }
 const firstText = "1. Abre WhatsApp y envianos un mensaje.";
@@ -35,6 +37,7 @@ export const popUp = ({
         `https://wa.me/+59898822947?text=Hola, realice un pedido a nombre de ${name}`,
         "_blank",
       );
+      window.location.replace("/");
     } else if (result.dismiss === Swal.DismissReason.cancel) {
       Swal.fire({
         title: "¿Cómo completar tu pedido?",
@@ -53,11 +56,23 @@ export const popUp = ({
     }
   });
 };
-export const popUpAlert = ({ title, text, icon, confirmButtonText }: Props) => {
+export const popUpAlert = ({
+  title,
+  text,
+  icon,
+  confirmButtonText,
+  cancelButtonText,
+  showCancelButton,
+  showConfirmButton,
+}: Props) => {
   Swal.fire({
     title,
     text,
     icon,
+    showConfirmButton,
+    showCancelButton,
+    cancelButtonText,
+    cancelButtonColor: "#B3B792",
     confirmButtonText,
     confirmButtonColor: "#B3B792",
     background: "#F1E3D3",
