@@ -2,6 +2,8 @@ import { useStore } from "@nanostores/react";
 import { CakeOrderCard } from "./CakeOrderCard";
 import { filterStore } from "@store/filterStore";
 import type { CollectionEntry } from "astro:content";
+import { useEffect } from "react";
+import { cartItems } from "@store/cartStore";
 
 interface Props {
   tortas: CollectionEntry<"tortas">[];
@@ -9,6 +11,7 @@ interface Props {
 
 export const CakeOrderList = ({ tortas }: Props) => {
   const $cakeFilter = useStore(filterStore);
+  const $cartItems = useStore(cartItems);
 
   const cakeFiltered = tortas
     .filter((cake) =>
@@ -23,6 +26,13 @@ export const CakeOrderList = ({ tortas }: Props) => {
         ),
       ),
     );
+
+  useEffect(() => {
+    if (!$cartItems.length) {
+      return;
+    }
+    sessionStorage.setItem("uchiPedido", JSON.stringify($cartItems));
+  }, [$cartItems]);
 
   return (
     <section className="md:grid md:grid-cols-2 lg:grid-cols-3 place-items-center md:gap-10 flex-1 lg:ml-8">

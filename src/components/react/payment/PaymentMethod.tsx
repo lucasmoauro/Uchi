@@ -1,4 +1,4 @@
-import type { PaymentInfo } from "@store/paymentStore";
+import { type PaymentInfo } from "@store/paymentStore";
 
 interface Props {
   label: string;
@@ -19,6 +19,7 @@ export const PaymentMethod = ({
         name="payment"
         type="radio"
         value={formPayment}
+        checked={formPayment.includes(label)}
         className="h-4 w-4 text-accent focus:ring-accent cursor-pointer"
         onChange={(e) => updatePaymentData("paymentType", label)}
       />

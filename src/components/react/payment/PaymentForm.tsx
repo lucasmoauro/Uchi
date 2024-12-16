@@ -110,6 +110,9 @@ export const PaymentForm = () => {
     });
     clearPaymentData();
     clearCartData();
+
+    sessionStorage.removeItem("uchiPedido");
+    sessionStorage.removeItem("paymentData");
   };
 
   return (

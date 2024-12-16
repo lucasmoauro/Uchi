@@ -24,6 +24,8 @@ const ShoppingCart = () => {
     );
   }, [$cartItems]);
 
+  
+
   return (
     <section className="fixed bottom-0 w-full flex flex-col items-center justify-center h-10">
       <div

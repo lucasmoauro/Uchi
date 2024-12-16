@@ -19,6 +19,12 @@ export const ShoppingCartTable = ({ path = "" }: Props) => {
     setTotalPrice(total);
   }, [$cartItems]);
 
+  useEffect(() => {
+    const sessionOrder = sessionStorage.getItem("uchiPedido");
+    if (sessionOrder?.length) {
+      cartItems.set(JSON.parse(sessionOrder));
+    }
+  }, []);
   return (
     <section
       className={`w-full col-span-3 md:mb-6 lg:mb-0 min-h-64 md:min-h-80 lg:min-h-64 relative`}

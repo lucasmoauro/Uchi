@@ -10,7 +10,6 @@ interface Props extends Pick<SweetAlertOptions, "title" | "text" | "icon"> {
 const firstText = "1. Abre WhatsApp y envianos un mensaje.";
 const secondText = "2. Indicanos tu nombre completo y tu pedido.";
 const thirdText = "3. ¡Así de fácil!";
-
 export const popUp = ({
   title,
   text,
